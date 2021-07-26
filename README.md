@@ -93,7 +93,21 @@ TODO: Additional instructions for testing the application.
 
 
 ## API
-TODO: API Reference with examples, or a link to a wiki or other documentation source.
+
+Listar Los endpoints asociados al microservicio Teams
+{api.version}: v1
+
+| API                                                               |       Description                             |       Request Body        |       Response Body       |   HTTP Status Code        |
+| ---                                                               | ---                                           | ---                       | ---                       | ---                       |
+| GET  https://api.bbcron.com/{api.version}/teams                   | Devuelve la lista de Teams                    |  None                     | Array Team                |     200/OK                |
+| GET  https://api.bbcron.com/{api.version}/teams/{teamId}          | Devuelve el detalle de un team                |  None                     |  Team                     |     200/OK                |
+| GET  https://api.bbcron.com/{api.version}/teams/users             | Devuelve la lista de usuarios de un Team      |  None                     | Array User                |     200/OK                |
+| POST  https://api.bbcron.com/{api.version}/teams/                 | Crea un teams                                 |  TeamResponse             |  User                     |     200/OK                |
+| DELETE  https://api.bbcron.com/{api.version}/teams/{teamId}       | Elimina un teams                              |  null                     |  null                     |     204/NO CONTENT        |
+| PATCH  https://api.bbcron.com/{api.version}/teams/users/{userId}  | Añade un usuario a un Team                    |  None                     |  Team                     |     200/OK                |
+| DELETE https://api.bbcron.com/{api.version}/teams/users/{userId}  | Elimina un usuario da un Team                 |  None                     |  None                     |     200/OK                |
+
+
 
 ## Acknowledgements
 TODO: Show folks some love.
