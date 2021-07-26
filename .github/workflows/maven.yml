@@ -27,8 +27,8 @@ jobs:
         run: mvn clean verify spotbugs:spotbugs
 
       - uses: jwgmeligmeyling/spotbugs-github-action@master
-          with:
-            path: '**/spotbugsXml.xml'
+        with:
+          path: '**/spotbugsXml.xml'
 
       - name: Generate Jacoco Badge
         id: jacoco
