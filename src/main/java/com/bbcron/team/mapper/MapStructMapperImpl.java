@@ -13,6 +13,7 @@ import com.bbcron.team.dto.user.UserResponse;
 import com.bbcron.team.repository.UserRepository;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 @Service
 public class MapStructMapperImpl implements MapStructMapper {
@@ -68,7 +69,7 @@ public class MapStructMapperImpl implements MapStructMapper {
     if (usersDomain == null)
       return null;
     return new HashSet<UserResponse>(
-        usersDomain.stream().map(aUserDomain -> this.userTo(aUserDomain)).toList());
+        usersDomain.stream().map(aUserDomain -> this.userTo(aUserDomain)).collect(Collectors.toList()));
   }
 
   @Override
@@ -76,7 +77,8 @@ public class MapStructMapperImpl implements MapStructMapper {
     if (teamsDomain == null)
       return null;
     return new HashSet<TeamBaseResponse>(
-        teamsDomain.stream().map(aTeamDomain -> this.teamToTeamBaseDto(aTeamDomain)).toList());
+        teamsDomain.stream().map(aTeamDomain -> this.teamToTeamBaseDto(aTeamDomain)).collect(
+            Collectors.toList()));
   }
 
   @Override
@@ -84,7 +86,8 @@ public class MapStructMapperImpl implements MapStructMapper {
     if (teamsDomain == null)
       return null;
     return new HashSet<TeamResponse>(
-        teamsDomain.stream().map(aTeamDomain -> this.teamToTeamResponse(aTeamDomain)).toList());
+        teamsDomain.stream().map(aTeamDomain -> this.teamToTeamResponse(aTeamDomain)).collect(
+            Collectors.toList()));
   }
 
   @Override
