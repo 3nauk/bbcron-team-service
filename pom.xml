@@ -39,7 +39,7 @@
 	</parent>
 
 	<properties>
-		<spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+		<spring-cloud.version>Hoxton.SR12</spring-cloud.version>
 		<springdoc.version>1.2.32</springdoc.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
