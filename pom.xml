@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.bbcron</groupId>
 	<artifactId>bbcron-team-service</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>bbcron-team-service</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.bbcron.com</url>
@@ -73,7 +73,7 @@
 		<dependency>
 			<groupId>com.bnauk.bbcron</groupId>
 			<artifactId>bbcron-core</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
+			<version>0.0.6-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -88,7 +88,6 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
-			<version>2.2.2.RELEASE</version>
 		</dependency>
 
 		<dependency>
@@ -170,6 +169,10 @@
 			<groupId>io.github.openfeign</groupId>
 			<artifactId>feign-gson</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
 		<!-- Test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -211,6 +214,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<dependency> 
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

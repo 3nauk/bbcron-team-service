@@ -12,7 +12,7 @@ jobs:
     name: 🔥 build
     runs-on: self-hosted
     env:
-      PRODUCT_NAME: bbcron-project-service
+      PRODUCT_NAME: bbcron-team-service
       DOCKER_ORGANIZATION: docker.io/3nauk
     steps:
       - uses: actions/checkout@v1
@@ -53,7 +53,7 @@ jobs:
     needs: build-with-jdk-11
     runs-on: self-hosted
     env:
-      PRODUCT_NAME: bbcron-user-service
+      PRODUCT_NAME: bbcron-team-service
       DOCKER_ORGANIZATION: docker.io/3nauk
     steps:
       - name: Restore build

@@ -1,7 +1,7 @@
 package com.bbcron.team.repository;
 
 import com.bbcron.team.domain.TeamDomain;
-import com.bnauk.bbcron.repository.BBCronResourceRepository;
+import com.bnauk.bbcron.user.repository.BBCronResourceRepository;
 import java.util.Optional;
 
 /**

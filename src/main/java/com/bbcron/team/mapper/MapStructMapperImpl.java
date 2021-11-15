@@ -8,6 +8,7 @@ import com.bbcron.team.domain.UserDomain;
 import com.bbcron.team.dto.team.TeamBaseResponse;
 import com.bbcron.team.dto.team.TeamRequest;
 import com.bbcron.team.dto.team.TeamResponse;
+import com.bbcron.team.dto.user.UserDto;
 import com.bbcron.team.dto.user.UserRequest;
 import com.bbcron.team.dto.user.UserResponse;
 import com.bbcron.team.repository.UserRepository;
@@ -58,7 +59,7 @@ public class MapStructMapperImpl implements MapStructMapper {
   public UserResponse userTo(UserDomain userDomain) {
     if (userDomain == null)
       return null;
-    UserResponse anUser = UserResponse.builder().userId(userDomain.getUserId()).build();
+    UserResponse anUser = UserResponse.builder().userId(userDomain.getUserId()).userName(userDomain.getUserName()).build();
     anUser
         .add(linkTo(methodOn(UserRepository.class).getUserById(anUser.getUserId())).withSelfRel());
     return anUser;
@@ -93,6 +94,21 @@ public class MapStructMapperImpl implements MapStructMapper {
   @Override
   public UserDomain userDtoToDomain(UserRequest userDto) {
     return UserDomain.builder().userId(userDto.getUserId()).build();
+  }
+
+  @Override
+  public Set<UserResponse> usersDtoToResponse(Set<UserDto> usersDto) {
+    if (usersDto == null)
+      return null;
+    return new HashSet<UserResponse>(
+        usersDto.stream().map(userDto -> this.userDtoToResponse(userDto)).collect(Collectors.toList()));
+  }
+
+  @Override
+  public UserResponse userDtoToResponse(UserDto userDto) {
+    UserResponse userResponse = UserResponse.builder().userId(userDto.getUserId()).userName(userDto.getUsername()).build();
+    userResponse.add(linkTo(methodOn(UserRepository.class).getUserById(userDto.getUserId())).withSelfRel());
+    return userResponse;
   }
 
 }

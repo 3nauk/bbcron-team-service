@@ -1,7 +1,7 @@
 package com.bbcron.team;
 
 import com.bnauk.bbcron.config.LoggingConfig;
-import com.bnauk.bbcron.repository.support.BBCronResourceRepositoryImpl;
+import com.bnauk.bbcron.user.repository.support.BBCronResourceRepositoryImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

@@ -5,6 +5,7 @@ import com.bbcron.team.domain.UserDomain;
 import com.bbcron.team.dto.team.TeamBaseResponse;
 import com.bbcron.team.dto.team.TeamRequest;
 import com.bbcron.team.dto.team.TeamResponse;
+import com.bbcron.team.dto.user.UserDto;
 import com.bbcron.team.dto.user.UserRequest;
 import com.bbcron.team.dto.user.UserResponse;
 import java.util.Set;
@@ -72,4 +73,16 @@ public interface MapStructMapper {
    */
   UserDomain userDtoToDomain(UserRequest userDto);
 
+  /**
+   * 
+   * @param usersDto
+   * @return
+   */
+  Set<UserResponse> usersDtoToResponse(Set<UserDto> usersDto);
+
+  /**
+   * return UserResponse
+   * @return
+   */
+  UserResponse userDtoToResponse(UserDto usersDto);
 }

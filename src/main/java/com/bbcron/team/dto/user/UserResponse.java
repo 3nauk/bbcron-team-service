@@ -15,4 +15,7 @@ public class UserResponse extends RepresentationModel<UserResponse> {
   @NotBlank
   private String userId;
 
+  @NotBlank
+  private String userName;
+
 }

@@ -1,9 +1,11 @@
 package com.bbcron.team.service;
 
+import com.bbcron.team.dto.team.TeamBase;
+import com.bbcron.team.dto.team.TeamBaseResponse;
 import com.bbcron.team.dto.team.TeamRequest;
 import com.bbcron.team.dto.team.TeamResponse;
 import com.bbcron.team.dto.user.UserResponse;
-import com.bnauk.bbcron.controller.PageResponse;
+import com.bnauk.bbcron.user.controller.PageResponse;
 import java.util.List;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.query.Query;
@@ -22,6 +24,13 @@ public interface TeamService {
    * @param teamId the teamId
    */
   ResponseEntity<TeamResponse> getTeamById(String teamId);
+
+  /**
+   * Get Teams By Id User
+   * @param userId, User Id
+   * @return teams associatted to the userId
+   */
+  ResponseEntity<List<TeamBaseResponse>> getTeamsByIdUser(String userId);
 
   /**
    * Remove a Team By Id
@@ -91,6 +100,6 @@ public interface TeamService {
    * 
    * @param teamId team Id
    */
-  ResponseEntity<List<TeamResponse>> getTeamsByTeamId(String teamId);
+  ResponseEntity<List<TeamBaseResponse>> getTeamsByTeamId(String teamId);
 
 }

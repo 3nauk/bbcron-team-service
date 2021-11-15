@@ -26,4 +26,6 @@ public class UserDomain implements Serializable {
   @Id
   private String userId;
 
+  private String userName;
+
 }

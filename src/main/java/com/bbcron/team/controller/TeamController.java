@@ -1,15 +1,16 @@
 package com.bbcron.team.controller;
 
 import com.bbcron.team.dto.team.TeamBase;
+import com.bbcron.team.dto.team.TeamBaseResponse;
 import com.bbcron.team.dto.team.TeamRequest;
 import com.bbcron.team.dto.team.TeamResponse;
 import com.bbcron.team.dto.user.UserRequest;
 import com.bbcron.team.dto.user.UserResponse;
 import com.bbcron.team.service.TeamService;
-import com.bnauk.bbcron.controller.PageResponse;
-import com.bnauk.bbcron.dto.filter.FilterCondition;
-import com.bnauk.bbcron.repository.support.GenericFilterCriteriaBuilder;
-import com.bnauk.bbcron.service.FilterBuilderService;
+import com.bnauk.bbcron.user.controller.PageResponse;
+import com.bnauk.bbcron.user.dto.filter.FilterCondition;
+import com.bnauk.bbcron.user.repository.support.GenericFilterCriteriaBuilder;
+import com.bnauk.bbcron.user.service.FilterBuilderService;
 import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -37,7 +38,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 /**
  * Team Controller
  */
-@Import(FilterBuilderService.class)
+@Import({FilterBuilderService.class})
 @RestController
 public class TeamController {
 
@@ -46,7 +47,7 @@ public class TeamController {
 
   @Autowired
   private FilterBuilderService filterBuilderService;
-
+  
   @Operation(summary = "Create a Team", description = "Create a new Team",
       requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(required = true,
           content = @Content(schema = @Schema(implementation = TeamRequest.class),
@@ -108,7 +109,7 @@ public class TeamController {
           @ApiResponse(description = "Project Not found", responseCode = "404")})
   @GetMapping(name = "Get Teams", path = "/teams/{teamId}/teams",
       produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<List<TeamResponse>> getTeamsByTeamId(
+  public ResponseEntity<List<TeamBaseResponse>> getTeamsByTeamId(
       @PathVariable("teamId") @NotNull String teamId) {
     return teamService.getTeamsByTeamId(teamId);
   }
@@ -158,12 +159,12 @@ public class TeamController {
   }
 
 
-  @Operation(summary = "Delete a Tema of the teams", method = "DELETE",
+  @Operation(summary = "Delete a Team of the teams", method = "DELETE",
       parameters = {@Parameter(allowEmptyValue = false, example = "60eead54e2ecc90037cbd090",
           name = "teamId", required = true, description = "Team parent")},
       responses = {@ApiResponse(description = "Success", responseCode = "200"),
           @ApiResponse(description = "Not Found", responseCode = "404")})
-  @DeleteMapping(name = "Delete team of the Teams list", path = "/teams/{teamId}/users",
+  @DeleteMapping(name = "Delete team of the Teams list", path = "/teams/{teamId}/teams",
       produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<Object> removeTeam(@PathVariable("teamId") @NotNull String teamId,
       @RequestBody TeamBase team) {
@@ -189,12 +190,13 @@ public class TeamController {
       @RequestParam(value = "orders", required = false) String orders) {
 
     Pageable pageable = filterBuilderService.getPageable(size, page, orders);
-    GenericFilterCriteriaBuilder filterCriteriaBuilder = new GenericFilterCriteriaBuilder();
+    
+    GenericFilterCriteriaBuilder genericFilterCriteriaBuilder = new GenericFilterCriteriaBuilder();
 
     List<FilterCondition> andConditions = filterBuilderService.createFilterCondition(filterAnd);
     List<FilterCondition> orConditions = filterBuilderService.createFilterCondition(filterOr);
 
-    Query query = filterCriteriaBuilder.addCondition(andConditions, orConditions);
+    Query query = genericFilterCriteriaBuilder.addCondition(andConditions, orConditions);
 
     return teamService.getPage(query, pageable);
   }
@@ -209,12 +211,22 @@ public class TeamController {
       @RequestParam(value = "filterOr", required = false) String filterOr,
       @RequestParam(value = "filterAnd", required = false) String filterAnd) {
 
-    GenericFilterCriteriaBuilder filterCriteriaBuilder = new GenericFilterCriteriaBuilder();
-
+ 
+    GenericFilterCriteriaBuilder genericFilterCriteriaBuilder = new GenericFilterCriteriaBuilder();
+    
     List<FilterCondition> andConditions = filterBuilderService.createFilterCondition(filterAnd);
     List<FilterCondition> orConditions = filterBuilderService.createFilterCondition(filterOr);
-
-    Query query = filterCriteriaBuilder.addCondition(andConditions, orConditions);
+    
+    Query query = genericFilterCriteriaBuilder.addCondition(andConditions, orConditions);
     return teamService.getAllByQuery(query);
+  }
+
+  @Operation(summary = "Get users by team", method = "GET", responses = {
+          @ApiResponse(description = "Success", responseCode = "200"),
+          @ApiResponse(description = "Team Not found", responseCode = "404") })
+  @GetMapping(name = "Get Teams By UserId", path = "/teams/users/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<List<TeamBaseResponse>> getTeamsByUser(
+          @PathVariable("userId") @NotNull String userId) {
+     return teamService.getTeamsByIdUser(userId);
   }
 }
