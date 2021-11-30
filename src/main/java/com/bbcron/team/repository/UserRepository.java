@@ -18,4 +18,3 @@ public interface UserRepository {
   public ResponseEntity<UserDto> getUserById(@PathVariable("userId") String userId);
 
 }
-

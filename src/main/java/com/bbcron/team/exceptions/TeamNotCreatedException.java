@@ -8,7 +8,7 @@ import javax.ws.rs.core.Response;
 public class TeamNotCreatedException extends RuntimeException {
 
   /**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 

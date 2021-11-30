@@ -1,0 +1,9 @@
+description: |
+  Should get users by TeamId
+request:
+  method: GET
+  url: /teams/60fd4167b51b6159ee987460/users
+
+response:
+  status: 200
+  bodyFromFile: "getUsersByTeamId.json"

@@ -17,21 +17,21 @@ public interface MapStructMapper {
 
   /**
    * Convert a teamDomain to TeamBase
-   * 
+   *
    * @param team
    * @return
    */
   TeamBaseResponse teamToTeamBaseDto(TeamDomain team);
 
   /**
-   * 
+   *
    * @param teamDomain
    * @return
    */
   TeamResponse teamToTeamResponse(TeamDomain teamDomain);
 
   /**
-   * 
+   *
    * @param teamRequest
    * @return
    */
@@ -39,42 +39,42 @@ public interface MapStructMapper {
 
 
   /**
-   * 
+   *
    * @param userDomain
    * @return
    */
   UserResponse userTo(UserDomain userDomain);
 
   /**
-   * 
+   *
    * @param usersDomain
    * @return
    */
   Set<UserResponse> usersToUsersBase(Set<UserDomain> usersDomain);
 
   /**
-   * 
+   *
    * @param teamsDomain
    * @return
    */
   Set<TeamBaseResponse> teamsToTeamBase(Set<TeamDomain> teamsDomain);
 
   /**
-   * 
+   *
    * @param teamsDomain
    * @return
    */
   Set<TeamResponse> teamsToTeamResponse(Set<TeamDomain> teamsDomain);
 
   /**
-   * 
+   *
    * @param userDto
    * @return
    */
   UserDomain userDtoToDomain(UserRequest userDto);
 
   /**
-   * 
+   *
    * @param usersDto
    * @return
    */

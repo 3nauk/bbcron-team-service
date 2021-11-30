@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class UserDomain implements Serializable {
 
   /**
-   * 
+   *
    */
   private static final long serialVersionUID = 1L;
 

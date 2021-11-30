@@ -1,4 +1,4 @@
-package com.bbcron.myPackage;
+package com.bbcron.team;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -3,7 +3,7 @@ package com.bbcron.team.exceptions;
 public class TeamAlreadyExistException extends RuntimeException {
 
   /**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 

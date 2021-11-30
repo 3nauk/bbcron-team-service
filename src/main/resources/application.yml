@@ -24,7 +24,11 @@ spring:
       database: bbcron
       port: 27017
       host: localhost
-  
+  cloud:
+    config:
+      import-check:
+        enabled: false
+
 # GET ENDPOINTS
 management:
   endpoints:
@@ -39,5 +43,6 @@ logging:
           mongodb:
             core:
               MongoTemplate: ERROR
-
-
+        web:
+          servlet:
+            handler: INFO

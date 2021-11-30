@@ -1,6 +1,5 @@
 package com.bbcron.team.service;
 
-import com.bbcron.team.dto.team.TeamBase;
 import com.bbcron.team.dto.team.TeamBaseResponse;
 import com.bbcron.team.dto.team.TeamRequest;
 import com.bbcron.team.dto.team.TeamResponse;
@@ -39,7 +38,7 @@ public interface TeamService {
    * @return responseEntity
    */
   ResponseEntity<Object> deleteTeam(String teamId);
-  
+
   /**
    * Remove a Team of the Team Parent
    * @param teamParentId
@@ -47,7 +46,7 @@ public interface TeamService {
    * @return
    */
   ResponseEntity<Object> deleteTeam(String teamParentId, String teamId);
-  
+
   /**
    * Get Teams By Query
    *
@@ -72,7 +71,7 @@ public interface TeamService {
 
   /**
    * Delete an User
-   * 
+   *
    * @param teamId
    * @param userId
    * @return
@@ -97,7 +96,7 @@ public interface TeamService {
 
   /**
    * List Teams for a team
-   * 
+   *
    * @param teamId team Id
    */
   ResponseEntity<List<TeamBaseResponse>> getTeamsByTeamId(String teamId);

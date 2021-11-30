@@ -6,7 +6,7 @@ package com.bbcron.team.exceptions;
 public class TeamNotFoundException extends RuntimeException {
 
   /**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 

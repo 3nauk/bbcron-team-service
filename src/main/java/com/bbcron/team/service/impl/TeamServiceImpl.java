@@ -3,7 +3,6 @@ package com.bbcron.team.service.impl;
 import com.bbcron.team.domain.TeamDomain;
 import com.bbcron.team.domain.TeamHasDomain;
 import com.bbcron.team.domain.UserDomain;
-import com.bbcron.team.dto.team.TeamBase;
 import com.bbcron.team.dto.team.TeamBaseResponse;
 import com.bbcron.team.dto.team.TeamRequest;
 import com.bbcron.team.dto.team.TeamResponse;
@@ -60,7 +59,7 @@ public class TeamServiceImpl implements TeamService {
       userRepository.getUserById(teamRequest.getCreatedBy().getUserId()).getBody();
     } catch (FeignException ex) {
       log.error("Error Creating the team", teamRequest.getName());
-      return new ResponseEntity<Object>(BBCronError.builder().name(ex.getClass().getName())
+      return new ResponseEntity<>(BBCronError.builder().name(ex.getClass().getName())
           .message(ex.getMessage()).status(ex.status()).build(), HttpStatus.resolve(ex.status()));
     }
     TeamDomain domain = mapper.teamRequestToDomain(teamRequest);
@@ -171,7 +170,7 @@ public class TeamServiceImpl implements TeamService {
     TeamDomain teamDomain = teamRepository.findById(teamId).orElseThrow(TeamNotFoundException::new);
     TeamHasDomain teamHas = teamHasRepository.findByTeamDomain(teamDomain).orElse(TeamHasDomain.builder().build());
 
-    teamHas.getUsers().forEach(user -> 
+    teamHas.getUsers().forEach(user ->
       usersAsList.add(mapper.userDtoToResponse(userRepository.getUserById(user.getUserId()).getBody())));
     return ResponseEntity.status(HttpStatus.OK).body(usersAsList);
   }
@@ -207,13 +206,13 @@ public class TeamServiceImpl implements TeamService {
 
   @Override
   public ResponseEntity<List<TeamBaseResponse>> getTeamsByIdUser(String userId) {
-    
+
     List<TeamBaseResponse> teams = new ArrayList<>();
     Set<TeamDomain> domains = new HashSet<>();
     Set<TeamHasDomain> teamHasDomains = teamHasRepository.findByUsersUserId(userId);
     teamHasDomains.forEach(hasDomain -> domains.add(teamRepository.findById(hasDomain.getTeamDomain().getTeamId()).get()));
-    
-    
+
+
     mapper.teamsToTeamBase(domains).forEach(teams::add);
     return ResponseEntity.ok(teams);
 

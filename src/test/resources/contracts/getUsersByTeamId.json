@@ -1,0 +1,20 @@
+[
+    {
+        "userId": "60984e0b35cf8264744ac641",
+        "links": [
+            {
+                "rel": "self",
+                "href": "http://localhost:8084/users/60984e0b35cf8264744ac641"
+            }
+        ]
+    },
+    {
+        "userId": "6096daffb234a14b65265fa6",
+        "links": [
+            {
+                "rel": "self",
+                "href": "http://localhost:8084/users/6096daffb234a14b65265fa6"
+            }
+        ]
+    }
+]

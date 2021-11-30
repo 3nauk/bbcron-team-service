@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class TeamBase {
-  
+
   /**
    * Team Id
    */
   private String teamId;
-  
+
 }

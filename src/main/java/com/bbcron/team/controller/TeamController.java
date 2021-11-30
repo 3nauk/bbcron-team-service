@@ -47,7 +47,7 @@ public class TeamController {
 
   @Autowired
   private FilterBuilderService filterBuilderService;
-  
+
   @Operation(summary = "Create a Team", description = "Create a new Team",
       requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(required = true,
           content = @Content(schema = @Schema(implementation = TeamRequest.class),
@@ -190,7 +190,7 @@ public class TeamController {
       @RequestParam(value = "orders", required = false) String orders) {
 
     Pageable pageable = filterBuilderService.getPageable(size, page, orders);
-    
+
     GenericFilterCriteriaBuilder genericFilterCriteriaBuilder = new GenericFilterCriteriaBuilder();
 
     List<FilterCondition> andConditions = filterBuilderService.createFilterCondition(filterAnd);
@@ -211,12 +211,12 @@ public class TeamController {
       @RequestParam(value = "filterOr", required = false) String filterOr,
       @RequestParam(value = "filterAnd", required = false) String filterAnd) {
 
- 
+
     GenericFilterCriteriaBuilder genericFilterCriteriaBuilder = new GenericFilterCriteriaBuilder();
-    
+
     List<FilterCondition> andConditions = filterBuilderService.createFilterCondition(filterAnd);
     List<FilterCondition> orConditions = filterBuilderService.createFilterCondition(filterOr);
-    
+
     Query query = genericFilterCriteriaBuilder.addCondition(andConditions, orConditions);
     return teamService.getAllByQuery(query);
   }

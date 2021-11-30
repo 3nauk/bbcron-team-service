@@ -1,0 +1,11 @@
+description: |
+  Should get all users
+request:
+  method: GET
+  url: /teams/page
+
+response:
+  status: 200
+  bodyFromFile: getAllTeams.json
+  headers:
+    Content-Type: application/json

@@ -22,7 +22,7 @@ public class TeamHasDomain {
 
     /**
      * Team Id
-     * 
+     *
      */
     @Id
     private String id;
@@ -43,5 +43,5 @@ public class TeamHasDomain {
     @DBRef
     @Default
     private Set<UserDomain> users = new HashSet<>();
-    
+
 }

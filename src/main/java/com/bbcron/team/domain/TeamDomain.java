@@ -23,7 +23,7 @@ public class TeamDomain {
 
   /**
    * Team Id
-   * 
+   *
    */
   @Id
   private String teamId;

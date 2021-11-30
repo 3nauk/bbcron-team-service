@@ -41,7 +41,7 @@ The application can be run locally or in a docker container, the requirements fo
 ### EGO
 A running instance of [EGO](https://github.com/overture-stack/ego/) is required to generate the Authorization tokens and to provide the verification key.
 
-[EGO](https://github.com/overture-stack/ego/) can be cloned and run locally if no public server is available. 
+[EGO](https://github.com/overture-stack/ego/) can be cloned and run locally if no public server is available.
 
 
 ### Local
