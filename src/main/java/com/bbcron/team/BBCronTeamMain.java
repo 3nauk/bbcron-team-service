@@ -2,6 +2,9 @@ package com.bbcron.team;
 
 import com.bnauk.bbcron.config.LoggingConfig;
 import com.bnauk.bbcron.user.repository.support.BBCronResourceRepositoryImpl;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,9 +14,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.web.filter.ForwardedHeaderFilter;
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.info.License;
 
 @Import(LoggingConfig.class)
 @EnableFeignClients
@@ -25,12 +25,19 @@ public class BBCronTeamMain {
     SpringApplication.run(BBCronTeamMain.class, args);
   }
 
+  /** CustomOpenApi */
   @Bean
-  public OpenAPI customOpenAPI(@Value("${springdoc.description}") String appDesciption,
+  public OpenAPI customOpenAPI(
+      @Value("${springdoc.description}") String appDesciption,
       @Value("${springdoc.version}") String appVersion) {
-    return new OpenAPI().info(new Info().title("BBCron.").version(appVersion).description(appDesciption)
-        .termsOfService("http://swagger.io/terms/")
-        .license(new License().name("Apache 2.0").url("http://springdoc.org")));
+    return new OpenAPI()
+        .info(
+            new Info()
+                .title("BBCron.")
+                .version(appVersion)
+                .description(appDesciption)
+                .termsOfService("http://swagger.io/terms/")
+                .license(new License().name("Apache 2.0").url("http://springdoc.org")));
   }
 
   @Bean
